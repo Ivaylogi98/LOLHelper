@@ -14,25 +14,22 @@ class ChampionguidescrapeSpider(CrawlSpider):
 
 
     def parse_page(self, response):
-        guide_link = response.xpath("//div[@class='mf-listings']//@href").getall()
-        guide_title = response.xpath("//div[@class='mf-listings']//h3/text()").getall()
-        guide_title = [title.strip() for title in guide_title if title not in ['', '\n']]
-        # print(f"guide_link{len(guide_link)}~", guide_link)
-        # print(f"guide_title{len(guide_title)}~", guide_title)
-        guides = '\n'.join( ''.join(x) for x in zip(guide_link, guide_title))
+        guide_url = response.xpath("//div[@class='mf-listings']//@href").getall()
+        print(guide_url)
+        for url in guide_url:
+            yield scrapy.Request(url=url, callback=self.parse_guide)
+        
 
-        filename = '{champion}guides-names-links.txt'
-        with open(filename, 'w', encoding="utf-8") as f:
-            f.write(guides)
-        self.log(f'Saved file {filename}')
-        url = response.xpath('//div[@class="browse-pager__next"]/a/@href').get()
-        return response.follow(url, self.parse_page, cb_kwargs=dict(item=item))
+        # next_page_url = response.xpath('//div[@class="browse-pager__next"]/a/@href').get()
+        # return response.follow(next_page_url, self.parse_page)
 
 
     def parse_guide(self, response, champion):
         print(response.url)
-        item = {}
+        # TODO: get the name of the guide
+        guide_name = response.xpath('//h1[@class="view-guide__banner__title tablet-up guide-h1"]/span/text()').get()
         champion = response.xpath("//span[@class='mobile-sr']/text()").get()[0]
+        guide_text = response.xpath("//div[@class='view-guide__chapters '").getall()
 
-        with open('assets/{champion}/guides', 'w') as f:
-            f.write(response.url)
+        with open(f'assets/{champion}/guides/{guide_name}', 'w+') as f:
+            f.write(guide_text)
