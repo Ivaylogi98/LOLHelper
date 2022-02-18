@@ -126,3 +126,6 @@ form {
 .item{
   margin: 6px;
 }
+img{
+  border-radius: 10px;
+}
