@@ -1,0 +1,69 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div id='names' class="neumorphism">{{champion}} vs {{enemy}}</div>
+<div class="data-container neumorphism">
+    <div id="build" class="flex_col">
+        <div class="build-element">
+            <h2>Starter Items</h2>
+                {% for item in build['starter_items'] %}
+                <div class="item">
+                    <img src="static/itemImages/{{item.replace(' ', '_')}}_item.png" alt="{{item}}">
+                    {{item}}
+                </div>
+                {% endfor %}
+        </div>
+        <div class="build-element">
+            <h2>Core Items</h2>
+                {% for item in build['core_items'] %}
+                <div class="item">
+                    <img src="static/itemImages/{{item.replace(' ', '_')}}_item.png" alt="{{item}}">
+                    {{item}}
+                </div>
+                {% endfor %}
+        </div>
+        <div class="build-element">
+            <h2>Optional Items</h2>
+                {% for item in build['optional_items'] %}
+                <div class="item">
+                    <img src="static/itemImages/{{item.replace(' ', '_')}}_item.png" alt="{{item}}">
+                    {{item}}
+                </div>
+                {% endfor %}
+        </div>
+        <div class="build-element">
+            <h2>Summoner Spells</h2>
+                {% for item in build['summoner_spells'] %}
+                <div class="spells">
+                    {{item.split(' ')[0][8:]}}
+                </div>
+                {% endfor %}
+        </div>
+        <div class="build-element">
+            <h2>Skill Order</h2>
+                <div class="skills">
+                    {% for skill in build['skill_order'] %}
+                    <div class="skill">
+                        {{skill.upper()}}
+                    </div>
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+    <div is="separator"></div>
+    <div class="flex_col">
+        <div id="summary" class="flex_row">
+            <div id="summary_title">Summary</div>
+            {{summary}}
+        </div>
+        <div id="tips" class="flex_row">
+            <div id="tips_title">Tips</div>
+                {% for tip in tips %}
+                <div class="tip">
+                    <p>• {{tip}}</p>
+                </div>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

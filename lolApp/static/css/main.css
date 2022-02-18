@@ -1,0 +1,128 @@
+html * {
+  font-family: "Lato", sans-serif;
+  color: white;
+}
+
+body {
+  background: linear-gradient(135deg, rgb(38, 78, 88), rgb(22, 47, 53));
+}
+.container {
+  width: 50vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15vh;
+}
+
+.neumorphism {
+  border-radius: 56px;
+  background: #264e58;
+  box-shadow: 6px 6px 18px #0f1f23, -6px -6px 18px #3d7d8d;
+}
+.neumorphism-inverted {
+  border-radius: 56px;
+  background: #264e58;
+  box-shadow: -6px -6px 18px #0f1f23, 6px 6px 18px #3d7d8d;
+}
+
+#selection {
+  margin: 25px;
+  width: 30vw;
+  align-items: center;
+}
+#selection_title{
+  margin-left: 100px;
+
+}
+#selection_title:link{
+  text-decoration: none;
+}
+form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+#selection_title {
+  font-family: "Lato", sans-serif;
+  color: white;
+  font-size: 52px;
+  text-align: center;
+}
+#form-wrapper {
+  color: white;
+  width: 30vw;
+  align-items: center;
+}
+#char-select {
+  flex: column;
+}
+#select-srapper {
+  flex: row;
+}
+
+.select-field {
+  margin: 10px 8px;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: rgb(38, 78, 88);
+  border: 0;
+}
+#submit_button {
+  font-size: 24px;
+  width: 10vw;
+  margin: 8px 8px 12px 8px;
+  padding: 2px;
+  border-radius: 8px;
+  background-color: rgb(38, 78, 88);
+  border: 0;
+  /* padding: 8px 180px; */
+}
+
+.flex_col {
+  width: 20vw;
+}
+
+#names {
+  font-size: 40px;
+  margin: 15px;
+  padding: 8px 22px;
+}
+.separator {
+  width: 10px;
+  border: 2px dotted #ff0000;
+}
+#summary_title,
+#tips_title {
+  font-size: 30px;
+  text-align: center;
+}
+
+.data-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 14px 26px;
+}
+
+.skills {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.skill {
+  margin: 5px;
+}
+
+.spells{
+  display: inline;
+  margin: 0px 8px;
+}
+
+.item{
+  margin: 6px;
+}

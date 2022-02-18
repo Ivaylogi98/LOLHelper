@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LOL Helper</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+</head>
+
+<body>
+    <div class="container">
+        <div id="selection" class="neumorphism">
+            <a href='/' id="selection_title">LOL Helper</a>
+            <div id="form-wrapper">
+                <form id="char-select" method="get" action="/vsdata">
+                    <div id="select-srapper">
+                        <select class="select-field" name="champion">
+                            <option disabled selected value> select an option </option>
+                            {% for champion in champions %}
+                            <option value="{{champion}}">{{champion}}</option>
+                            {% endfor %}
+                        </select>
+                        <select class="select-field" name="enemy" method="GET" action="/vs-data">
+                            <option disabled selected value> select an option </option>
+                            {% for champion in champions %}
+                            <option value="{{champion}}">{{champion}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <input id="submit_button" type="submit" />
+                </form>
+            </div>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</html>
