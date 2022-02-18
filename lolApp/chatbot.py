@@ -13,7 +13,7 @@ def get_vs_data(champion, enemy):
 def get_champion_names():
     with open('assets/championNames.txt') as f:
         championNames = f.readline().split(',')
-    return championNames
+    return sorted(championNames)
 
 
 app = Flask(__name__)
